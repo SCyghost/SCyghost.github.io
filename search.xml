@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>链表的实现喵</title>
+      <link href="/2023/11/10/%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%96%B5/"/>
+      <url>/2023/11/10/%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%96%B5/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>问题集</title>
+      <link href="/2023/11/01/%E9%97%AE%E9%A2%98%E9%9B%86/"/>
+      <url>/2023/11/01/%E9%97%AE%E9%A2%98%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>蜥蜴饲养日记1</title>
+      <link href="/2023/10/21/%E8%9C%A5%E8%9C%B4%E9%A5%B2%E5%85%BB%E6%97%A5%E8%AE%B01/"/>
+      <url>/2023/10/21/%E8%9C%A5%E8%9C%B4%E9%A5%B2%E5%85%BB%E6%97%A5%E8%AE%B01/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>动态规划问题喵</title>
+      <link href="/2023/10/17/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98%E5%96%B5/"/>
+      <url>/2023/10/17/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98%E5%96%B5/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>基础算法</title>
+      <link href="/2023/10/01/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/"/>
+      <url>/2023/10/01/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>不得不品的算法竞赛筑基</title>
+      <link href="/2023/09/26/%E4%B8%8D%E5%BE%97%E4%B8%8D%E5%93%81%E7%9A%84%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E7%AD%91%E5%9F%BA/"/>
+      <url>/2023/09/26/%E4%B8%8D%E5%BE%97%E4%B8%8D%E5%93%81%E7%9A%84%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E7%AD%91%E5%9F%BA/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>与连续的爱恨情仇</title>
+      <link href="/2023/09/13/%E4%B8%8E%E8%BF%9E%E7%BB%AD%E7%9A%84%E7%88%B1%E6%81%A8%E6%83%85%E4%BB%87/"/>
+      <url>/2023/09/13/%E4%B8%8E%E8%BF%9E%E7%BB%AD%E7%9A%84%E7%88%B1%E6%81%A8%E6%83%85%E4%BB%87/</url>
+      
+        <content type="html"><![CDATA[<h3 id="一开始的尝试"><a href="#一开始的尝试" class="headerlink" title="一开始的尝试"></a>一开始的尝试</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>小明这些天一直在思考这样一个奇怪而有趣的问题：</p><p>在 1~ <em>N</em> 的某个全排列中有多少个连号区间呢？这里所说的连号区间的定义是：</p><p>如果区间 [<em>L</em>,<em>R</em>] 里的所有元素（即此排列的第 <em>L</em>个到第 <em>R</em> 个元素）递增排序后能得到一个长度为 <em>R</em>−<em>L</em>+1 的“连续”数列，则称这个区间连号区间。</p><p>当 <em>N</em> 很小的时候，小明可以很快地算出答案，但是当 <em>N</em> 变大的时候，问题就不是那么简单了，现在小明需要你的帮助。</p><h4 id="一开始的思路"><a href="#一开始的思路" class="headerlink" title="一开始的思路"></a>一开始的思路</h4><p>我想着就是连续排列嘛，那我直接弄出最大最小数，和它的长度不就行了。</p><p>那么要怎么求最大数和最小数呢</p><p>我的思路是在排列的时候偷偷把最大和最小数拿出取去，然后建立以从左到右数列为起点，再建立一个从右到左的循环。然后看每一个第二层循环剔出的数，然后看看符不符合规则。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> n=<span class="number">0</span>;</span><br><span class="line">   <span class="type">int</span> max=<span class="number">0</span>;</span><br><span class="line">   <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">   <span class="type">int</span> min=<span class="number">99999999</span>;</span><br><span class="line">   cin&gt;&gt;n;</span><br><span class="line">   <span class="type">int</span> a[n];</span><br><span class="line">   <span class="comment">//有些从一开始</span></span><br><span class="line">   <span class="comment">//只需取最大最小值即可</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="type">int</span> i =<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">   &#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">        <span class="keyword">if</span>(max&lt;=a[i])</span><br><span class="line">        &#123;</span><br><span class="line">            max = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(min&gt;=a[i])</span><br><span class="line">        &#123;</span><br><span class="line">            min = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">   &#123;</span><br><span class="line">        <span class="type">int</span> min1 = min;</span><br><span class="line">        <span class="type">int</span> max1 = max;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j =n<span class="number">-1</span>;j&gt;=i;j--)</span><br><span class="line">        &#123;   <span class="keyword">if</span>(i==j)</span><br><span class="line">        &#123;</span><br><span class="line">            ans++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>((max1-min1)==(j-i))</span><br><span class="line">            &#123;</span><br><span class="line">                ans++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(a[j]==max1)</span><br><span class="line">            &#123;</span><br><span class="line">                max1--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(a[j]==min1)</span><br><span class="line">            &#123;</span><br><span class="line">                min1++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="keyword">if</span>(a[i]==max)</span><br><span class="line">            &#123;</span><br><span class="line">                max--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(a[i]==min)</span><br><span class="line">            &#123;</span><br><span class="line">                min++;</span><br><span class="line">            &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   cout&lt;&lt;ans;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但这样做有两个弊端，就是我是每次都减减，然后我就认为自己能取到最大最小值。这不就是在假设我取的那段线是连续的嘛~，这显然不可能，所以我可以在变小的数等于剔除的那个值+1的时候连减。但这样又会有个问题，假设中间的差值为或者更多会怎么样（这种事情会发生嘛，很显然我们可以举一个例子，23145。)</p><p>这样子，我就要再排序一下，这样子复杂度就来到了n3(我是真的不喜欢复杂度上升)，这个算法和猴子瞎敲有什么区别。</p><p>让我们观察一下前面的数，其实我们可以发现，当要减去最小值的时候，只需减去数组里面的数的数量即可。那我们就叫这个数为惩罚数，只要每一次循环最大最小数没有改变，它就加一</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>探索性分析（EDA）</title>
+      <link href="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/"/>
+      <url>/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h2 id="探索性分析有什么"><a href="#探索性分析有什么" class="headerlink" title="探索性分析有什么"></a>探索性分析有什么</h2><p>探索性分析分为3类，一种是预处理，一种是数据分布分析（即描述性分析），一种是相关性分析。按照图来分的话是四类，有图单变量，无图单变量，有图多变量，无图多变量</p><h2 id="为什么要探索性分析"><a href="#为什么要探索性分析" class="headerlink" title="为什么要探索性分析"></a>为什么要探索性分析</h2><p>一方面，因为很多检验方法，都是假设物体满足什么分布，一个一个尝试太蠢了。不如先看看。而且探索性分析有一般性步骤（这就跟做某件事的人多了，肯定能提供很多经验。虽然是对是错反而无从考量）</p><h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><h2 id="数据文本化"><a href="#数据文本化" class="headerlink" title="数据文本化"></a>数据文本化</h2><h3 id="关于pandas库"><a href="#关于pandas库" class="headerlink" title="关于pandas库"></a>关于pandas库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">A = pd.DataFrame(&#123;<span class="string">&quot;A&quot;</span>:[<span class="string">&quot;A&quot;</span>]&#125;)</span><br><span class="line"><span class="built_in">print</span>(A)</span><br></pre></td></tr></table></figure><h3 id="关于剔除多余文本"><a href="#关于剔除多余文本" class="headerlink" title="关于剔除多余文本"></a>关于剔除多余文本</h3><h4 id="单一格式"><a href="#单一格式" class="headerlink" title="单一格式"></a>单一格式</h4><p>先讨论最简单的情况，如果你要的东西是某个字符串，然后我们要把它转化为数据（也有可能是编码）</p><h5 id="假设这个文本就是我们要转化的数据"><a href="#假设这个文本就是我们要转化的数据" class="headerlink" title="假设这个文本就是我们要转化的数据"></a>假设这个文本就是我们要转化的数据</h5><p>那么，一般就两种做法进行编码和使用训练好的文本库</p><h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">A = pd.DataFrame(&#123;<span class="string">&quot;A&quot;</span>:[<span class="string">&quot;A&quot;</span>]&#125;)</span><br><span class="line"><span class="built_in">print</span>(A)</span><br></pre></td></tr></table></figure><h6 id="最常见的编码"><a href="#最常见的编码" class="headerlink" title="最常见的编码"></a>最常见的编码</h6><p>我们可以读入表格，然后利用基本的查找替换功能</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><h5 id="不是我们需要的情况"><a href="#不是我们需要的情况" class="headerlink" title="不是我们需要的情况"></a>不是我们需要的情况</h5><p>让我们看一看周围，你要怎么把电脑右下角的时间转化为数据。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">time_str = <span class="string">&quot;2019/6/11 16:27&quot;</span></span><br><span class="line">datetime_obj = datetime.strptime(time_str, <span class="string">&quot;%Y/%m/%d %H:%M&quot;</span>)</span><br><span class="line"></span><br><span class="line">start_time = datetime(<span class="number">2019</span>, <span class="number">1</span>, <span class="number">1</span>)  <span class="comment"># 设置起始时间为2019年初</span></span><br><span class="line">time_diff = datetime_obj - start_time  <span class="comment"># 计算时间差</span></span><br><span class="line"></span><br><span class="line">minutes = time_diff.total_seconds() // <span class="number">60</span>  <span class="comment"># 转换为分钟数</span></span><br><span class="line"><span class="built_in">print</span>(minutes)</span><br></pre></td></tr></table></figure><p>我们把时间提取成年月日后，再设置了一个起始时间。然后计算时间差之后，再转化为秒数再除以60，就是转化为分钟数<br>同理，下面是转化为小时数，以此类推</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(time_diff.total_seconds()//<span class="number">3600</span>)</span><br></pre></td></tr></table></figure><p>当然，对于行读取，可以这么用</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s[<span class="string">&#x27;时间&#x27;</span>] = pd.to_datetime(s[<span class="string">&#x27;时间&#x27;</span>])<span class="comment"># s为dataFrame数据，时间是列名</span></span><br><span class="line">s[<span class="string">&#x27;时间&#x27;</span>]=(s[<span class="string">&#x27;时间&#x27;</span>]-s[<span class="string">&#x27;时间&#x27;</span>][<span class="number">0</span>]).dt.seconds/<span class="number">3600</span></span><br><span class="line"><span class="built_in">print</span>(s.head())</span><br></pre></td></tr></table></figure><p><img src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/blog\myblog\source_posts\探索性分析（DEV）\image-20230819141755613.png" alt="image-20230819141755613"></p><p>得到该结果</p><h1 id="数据分布和相关性分析·"><a href="#数据分布和相关性分析·" class="headerlink" title="数据分布和相关性分析·"></a>数据分布和相关性分析·</h1><h2 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h2><p>绘制折线图有什么用呢，除了能让我们看到数据的相关性以外，还能让我们看到数据的周期性</p><h5 id="一般的折线图绘制"><a href="#一般的折线图绘制" class="headerlink" title="一般的折线图绘制"></a>一般的折线图绘制</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">plt.figure(figsize=(<span class="number">20</span>,<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&quot;各元素随时间变化图&quot;</span>)</span><br><span class="line">sns.lineplot(data=s)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p><img src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/blog\myblog\source_posts\探索性分析（DEV）\image-20230819142906317.png" alt="image-20230819142906317"></p><p>（如果你的中文没显示请加上下面这行代码）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.rcParams[&#x27;font.sans-serif&#x27;] = [&#x27;SimHei&#x27;]</span><br></pre></td></tr></table></figure><p>我想说，这张图除了PM10在某两个时间很逆天，数据真是乱成一锅粥（笑）。不过我们可以看到大多数数据还是有点周期性的呢，一跳一跳的。而且时间也因为这种关系叠在一起</p><h6 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h6><p>这次我们先试试只画一个来看看，完整代码如下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import seaborn as sns</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import pandas as pd</span><br><span class="line">## 导入数据</span><br><span class="line">s = pd.read_csv(&quot;你的文件地址&quot;,encoding=&#x27;gbk&#x27;)#把”你的文件地址”替换成你的文件地址</span><br><span class="line">plt.rcParams[&#x27;font.sans-serif&#x27;] = [&#x27;SimHei&#x27;]  # 设置中文字体为黑体或其他支持中文的字体</span><br><span class="line">## 时间元素替换</span><br><span class="line">s[&#x27;时间&#x27;] = pd.to_datetime(s[&#x27;时间&#x27;])# s为dataFrame数据，时间是列名</span><br><span class="line">s[&#x27;时间&#x27;]=(s[&#x27;时间&#x27;]-s[&#x27;时间&#x27;][0]).dt.seconds/3600</span><br><span class="line">print(s.head())</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(20,10))</span><br><span class="line">plt.title(&quot;PM2.5随时间变化图&quot;)</span><br><span class="line">sns.lineplot(data=s[&#x27;PM2.5&#x27;],label=&quot;PM2.5&quot;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p>在用过去的小时数时间替代字符串的时间后，我们用label为我们的图命名了</p><p><img src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/blog\myblog\source_posts\探索性分析（DEV）\image-20230819145051564.png" alt="image-20230819145051564"></p><p>由于我们以小时为单位计时，我们很自然地联想到一周是168小时，这和pm2.5的变化似乎没有周期性关系。但由图可知，PM2.5是有着周期性的</p><p>让我们看看PM10的表现</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">20</span>,<span class="number">10</span>))</span><br><span class="line">plt.title(<span class="string">&quot;PM2.5随时间变化图&quot;</span>)</span><br><span class="line">sns.lineplot(data = s[<span class="string">&#x27;pm10&#x27;</span>],label = <span class="string">&#x27;pm10&#x27;</span>)</span><br><span class="line">sns.lineplot(data=s[<span class="string">&#x27;PM2.5&#x27;</span>],label=<span class="string">&quot;PM2.5&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p><img src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/blog\myblog\source_posts\探索性分析（DEV）\image-20230819145815799.png" alt="image-20230819145815799"></p><p>可以看到PM10和PM2.5叠在一起，似乎有着很强的相关性（画个热力图看看吧），而之前凸出的几个点还是PM10(跟异常值一样)不过。其实，不把data数据不按起始时间算更方便一点呢</p><p><img src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20230819150906229.png" alt="image-20230819150906229"></p><h2 id="bar-AND-HEAT"><a href="#bar-AND-HEAT" class="headerlink" title="bar AND HEAT"></a>bar AND HEAT</h2><h3 id="bar-柱状图"><a href="#bar-柱状图" class="headerlink" title="bar(柱状图)"></a>bar(柱状图)</h3><p>柱状图其实不少见了，用来统计大小和多少什么的。有什么意义呢，可以看看平均值，最高值什么的，会有好一点的感觉</p><p>让我们猜测一下，柱状图的代码是</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.barplot()</span><br></pre></td></tr></table></figure><p><img src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20230819152946502.png" alt="image-20230819152946502">事实也是如此，让我们过了吧（笑).可以看到PM2.5的污染治理在蒸蒸日上嘛</p><h3 id="heatmap"><a href="#heatmap" class="headerlink" title="heatmap"></a>heatmap</h3><p>热力图的原理就不多做介绍，就是协方差。上</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.rcParams[&#x27;font.sans-serif&#x27;] = [&#x27;Arial Unicode MS&#x27;]</span><br><span class="line">p = s.corr()</span><br><span class="line">plt.figure(figsize=(20,10))</span><br><span class="line">sns.heatmap(data=p,annot=True,square=True,cmap=&#x27;coolwarm&#x27;)</span><br><span class="line">plt.title(&quot;热力图&quot;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p><img src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20230819155237890.png" alt="image-20230819155237890"></p><p>和我猜测的一样，PM2.5和PM10相关性很高，O3几乎和谁都不兼容。</p><p><img src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20230819162537369.png" alt="image-20230819162537369"></p><p>还是老样子，具有很强的周期性的样子啊</p><p>让我们对他拟合一下</p><p><img src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20230819163900297.png" alt="image-20230819163900297"></p><p>总体呈现下降趋势</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于微分方程，爬虫，决策的综合练习</title>
+      <link href="/2023/08/07/%E4%B8%80%E6%AC%A1%E5%B0%9D%E8%AF%95/"/>
+      <url>/2023/08/07/%E4%B8%80%E6%AC%A1%E5%B0%9D%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="关于实践"><a href="#关于实践" class="headerlink" title="关于实践"></a>关于实践</h2><p>我想试着用新学到的模型来分析股票涨落，首先，拟合要被率先排除，因为拟合从长远看一定是趋于无限大或者无限小的，这对于股票来说不科学（但也可以尝试短期）。然后，我要爬取股票的相关信息。我能不能爬取新闻中的有用情报呢。这需要文本分析，然后我就只有决策树，微分模型两种拟合方式，应该稍微试一试</p><h3 id="数据的爬取"><a href="#数据的爬取" class="headerlink" title="数据的爬取"></a>数据的爬取</h3><p>原本一看，傻眼了。怎么这么多呢，然后再细细翻来，发现其实在一个xgr的his开头的请求中，到时候只要把标号弄好就行了</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>杂记</title>
+      <link href="/2023/08/03/%E6%9D%82%E8%AE%B0/"/>
+      <url>/2023/08/03/%E6%9D%82%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>##做题系列<br>做一道题，给出坐标，让我求三角形边长。如果是正常就再简单不过了。但在电脑上，我就会担心精度的问题。在那么大尺度相乘下，会不会出现在末端有个微点进了一位，后面又刚好是0.99999这样子。但是考虑结果的保留两位，影响比较大的是第三位是4的情况</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日记 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>机器学习入门</title>
+      <link href="/2023/07/31/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/"/>
+      <url>/2023/07/31/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="基本参数与概念"><a href="#基本参数与概念" class="headerlink" title="基本参数与概念"></a>基本参数与概念</h2><h3 id="误差函数"><a href="#误差函数" class="headerlink" title="误差函数"></a>误差函数</h3><p>这应该表明自己对样本数据集的差。根据我们需要的效果，我们会用不同的函数来表达这个程度。计算公式为样本预测量减去实际值。然后我们会用一个预测函数来放大这值。有以下几类状态</p><h4 id="0-1"><a href="#0-1" class="headerlink" title="0-1"></a>0-1</h4><p>就是只记住符合还是不符合的，了解一点类与量的关系的，都能理解：这是很适合非定量数据的一种计量方法</p><h4 id="绝对值和平方"><a href="#绝对值和平方" class="headerlink" title="绝对值和平方"></a>绝对值和平方</h4><p>得值为差的平方，或者绝对值。没什么好说的</p><h4 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h4><p>没什么好说的，之后都没用到；本质上还是单调函数</p><h3 id="经验误差"><a href="#经验误差" class="headerlink" title="经验误差"></a>经验误差</h3><p>经验函数的本质就是误差的相加。把各个点的误差相加，然后除以样本总数；就跟游戏里面的综合战败点一样吧。当样本的量接近于无穷的时候，经验误差会接近于理想误差。但是，再样本误差很小的情况，当模型复杂度增加，会出现经验误差减小。当复杂度到达一定临界值，测试误差会上升，出现过拟合现象。为了应对这种情况，我们在，经验误差中加入了L函数。</p><h4 id="L"><a href="#L" class="headerlink" title="L"></a>L</h4><p>由于模型的复杂度上升，很容易出现过拟合的情况。L函数是一种描述模型复杂度的函数，它有三种类型，点，正方体，圆</p><h3 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h3><p>这里推荐五折验证，就是把数据随机分成五份，留下了一份用来验证，剩下的用来验证</p><h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><p>决策树是一种可以用来回归和分类的方法，它是根据贪心算法进行的，根据信息熵用模型计算后求最小值的一种算法。它会根据贪心算法，一步一步给每一个树叶分类，直到不能再小为止</p><h3 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h3><h4 id="什么是信息熵"><a href="#什么是信息熵" class="headerlink" title="什么是信息熵"></a>什么是信息熵</h4><p>这就是描述一个混乱程度的指标。什么是混乱程度，你可以去联想一下你的房间，在整洁的状态下，东西很好找，混乱则相反。<br>可是，数据集没有空间位置之分啊。我们可以在联想房间，你的东西种类越多，就越难找。再比如说，当大物件比较多的时候，虽然小东西难找，但大物件很方便。</p><h4 id="信息熵的程度描述"><a href="#信息熵的程度描述" class="headerlink" title="信息熵的程度描述"></a>信息熵的程度描述</h4><p>H（x） &#x3D; Elog2（p（i））*-p（i），其中H表示信息熵，p（i）表示某件事发生的概率</p><h3 id="经典模型"><a href="#经典模型" class="headerlink" title="经典模型"></a>经典模型</h3><h4 id="ID3"><a href="#ID3" class="headerlink" title="ID3"></a>ID3</h4><p>ID3的特点就是根据信息增益的最大来取根节点。什么是信息增益，就是原本的信息熵减去（分类后所有类型的信息熵之和）的值。很容易看出来，这样子如果我们按照那些独特性很强的变量，比如名字，编号，一下子信息熵就归零了。但是这样分了又等于没有分</p><h4 id="ID4-5"><a href="#ID4-5" class="headerlink" title="ID4.5"></a>ID4.5</h4><p>为了应对上面那种情况，加入了信息增益率</p><h2 id="练习v关于2022年C题"><a href="#练习v关于2022年C题" class="headerlink" title="练习v关于2022年C题"></a>练习v关于2022年C题</h2><h4 id="原题目"><a href="#原题目" class="headerlink" title="原题目"></a>原题目</h4><p>丝绸之路是古代中西方文化交流的通道，其中玻璃是早期贸易往来的宝贵物证。早期的玻<br>璃在西亚和埃及地区常被制作成珠形饰品传入我国，我国古代玻璃吸收其技术后在本土就地取<br>材制作，因此与外来的玻璃制品外观相似，但化学成分却不相同。<br>玻璃的主要原料是石英砂，主要化学成分是二氧化硅（SiO2）。由于纯石英砂的熔点较高，<br>为了降低熔化温度，在炼制时需要添加助熔剂。古代常用的助熔剂有草木灰、天然泡碱、硝石<br>和铅矿石等，并添加石灰石作为稳定剂，石灰石煅烧以后转化为氧化钙（CaO）。添加的助熔<br>剂不同，其主要化学成分也不同。例如，铅钡玻璃在烧制过程中加入铅矿石作为助熔剂，其氧<br>化铅（PbO）、氧化钡（BaO）的含量较高，通常被认为是我国自己发明的玻璃品种，楚文化<br>的玻璃就是以铅钡玻璃为主。钾玻璃是以含钾量高的物质如草木灰作为助熔剂烧制而成的，主<br>要流行于我国岭南以及东南亚和印度等区域。<br>古代玻璃极易受埋藏环境的影响而风化。在风化过程中，内部元素与环境元素进行大量交<br>换，导致其成分比例发生变化，从而影响对其类别的正确判断。</p><p>现有一批我国古代玻璃制品的相关数据，考古工作者依据这些文物样品的化学成分和其他<br>检测手段已将其分为高钾玻璃和铅钡玻璃两种类型。附件表单 1 给出了这些文物的分类信息，<br>附件表单 2 给出了相应的主要成分所占比例（空白处表示未检测到该成分）。这些数据的特点<br>是成分性，即各成分比例的累加和应为 100%，但因检测手段等原因可能导致其成分比例的累<br>加和非 100%的情况。本题中将成分比例累加和介于 85%~105%之间的数据视为有效数据。<br>请你们团队依据附件中的相关数据进行分析建模，解决以下问题：<br>问题 1 对这些玻璃文物的表面风化与其玻璃类型、纹饰和颜色的关系进行分析；结合玻<br>璃的类型，分析文物样品表面有无风化化学成分含量的统计规律，并根据风化点检测数据，预<br>测其风化前的化学成分含量。<br>问题 2 依据附件数据分析高钾玻璃、铅钡玻璃的分类规律；对于每个类别选择合适的化<br>学成分对其进行亚类划分，给出具体的划分方法及划分结果，并对分类结果的合理性和敏感性<br>进行分析。<br>问题 3 对附件表单 3 中未知类别玻璃文物的化学成分进行分析，鉴别其所属类型，并对<br>分类结果的敏感性进行分析。<br>问题 4 针对不同类别的玻璃文物样品，分析其化学成分之间的关联关系，并比较不同类<br>别之间的化学成分关联关系的差异性。</p><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><p>观察所给材料，由于成分少，样本数据缺失，因此不需要使用降维处理。按照将分类数据转化为定量数据或者编码后，即可进行操作。（虽然之前弄过好多次，可是对元胞数组，表之类的还是有点糊</p><h4 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h4><p>处理相关性，已知的相关性模型有卡方，多元，皮尔斯系数。。。。。我记得也有用多元来搞定类回归的。。。。还有一个是根据最大数似然；这些东西我最熟的就只有皮尔斯了。但这道题明显是一个定类数据的问题-》可能的点，方差估计<br>遇到的问题，知网找不到论文。。。</p><h4 id="概率模型的练习"><a href="#概率模型的练习" class="headerlink" title="概率模型的练习"></a>概率模型的练习</h4><p>尝试使用regress模型，成功，发现系数，系数信度，残差，和残差信度还有综合统计值（r，F值来表示拟合优度的）</p><h4 id="关于实践"><a href="#关于实践" class="headerlink" title="关于实践"></a>关于实践</h4><p>我想试着用新学到的模型来分析股票涨落，首先，拟合要被率先排除，因为拟合从长远看一定是趋于无限大或者无限小的，这对于股票来说不科学。然后，我要爬取股票的相关信息。我能不能爬取新闻中的有用情报呢。这需要文本分析，然</p><img src="/2023/07/31/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/A.png" class title="我的图片">]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术笔记 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于机器学习的文本处理</title>
+      <link href="/2023/07/29/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/"/>
+      <url>/2023/07/29/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h3 id="机器学习的文本处理"><a href="#机器学习的文本处理" class="headerlink" title="机器学习的文本处理"></a>机器学习的文本处理</h3><p>在机器学习中，由于[人类的多样性]，从网上搜素的文本库充满了错别字，近义词，以及一些奇奇怪怪的表情符号和无意义词汇。另一方面，如果不把文本分解成数值特征，是无法用来机器学习的</p><h4 id="词袋法"><a href="#词袋法" class="headerlink" title="词袋法"></a>词袋法</h4><p>这是一种很常见的技术，在python中可以通过scikit-learn有一个feature_extraction模块可以帮助我来实现它。其基本思想是，根本不管一句话里面的语法，只计量里面出现的词汇，和计量数。而储存文本的东西叫做袋子，只计量词汇的数量。就好像一个商店，只显示你有的物体量</p><p>这个办法有三步：分词，计数 归一化</p><p>分词：将单词从空格和逗号中分出（这个自己也可以实现）</p><p>计数：计算文档次数的出现次数</p><p>归一化：将文档按重要性排序</p><p>CountVec</p><h4 id="Tf-IDF向量化器"><a href="#Tf-IDF向量化器" class="headerlink" title="Tf-IDF向量化器"></a>Tf-IDF向量化器</h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于微分方程</title>
+      <link href="/2023/07/28/%E5%85%B3%E4%BA%8E%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
+      <url>/2023/07/28/%E5%85%B3%E4%BA%8E%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h2 id="怎么发现事物的关系"><a href="#怎么发现事物的关系" class="headerlink" title="怎么发现事物的关系"></a>怎么发现事物的关系</h2><h3 id="一些考虑"><a href="#一些考虑" class="headerlink" title="一些考虑"></a>一些考虑</h3><p>如果要建立速度与位移变化趋势，我会进行受力分析，说白了。我会考虑已知量和未知量的联系。。。</p><h4 id="大概的来源"><a href="#大概的来源" class="headerlink" title="大概的来源"></a>大概的来源</h4><p>与建立微分方程相关的方法论，《数学模型》,一些经验贴，</p><h4 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h4><p>估计会发现多种理论，以数学模型书中方案为准。我会发现有些东西有用，而有些没有软用。总之，我会更了解这个</p><h3 id="探索"><a href="#探索" class="headerlink" title="探索"></a>探索</h3><h4 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h4><p>没找到查找相关的方法论。与之相关的内容是相关的题型。和我总结的差不多，包括机理分析类，即我说的微分方程类。根据查阅的资料，知识经验来给出明确的关系式。数据分析类，根据拟合数据的输入输出，利用统计学知识，来寻找变量的关系。最典型的是回归性分析，机器学习，卡方那一类；以及类比仿真，这一类我有见过，当时只道平常。但怎么做我不清楚，他是用什么来表示相关变量的关系的。似乎是假设某些东西的关系，像印象中的模型来行动。</p><h4 id="经验帖的概况"><a href="#经验帖的概况" class="headerlink" title="经验帖的概况"></a>经验帖的概况</h4><h5 id="关键词-数学建模搜索"><a href="#关键词-数学建模搜索" class="headerlink" title="关键词 数学建模搜索"></a>关键词 数学建模搜索</h5><h6 id="1"><a href="#1" class="headerlink" title="1"></a>1</h6><p>方法（模型）：中国知网或者维普，万方，GOOGLE学术等，首先要就建模题目查找相关文献，了解专业背景；数学中国，上边可以找到很多有用的资料，可以自己整理成资料库；<br>数据：数据堂，国家或者城市的统计局网站，年鉴等等，搜索需要的数据；<br>程序：pudn，csdn，GOOGLE code等，就将要使用的方法搜索相关代码；<br>写作：最关键的是你得能把要表达的内容，清晰流畅地写在论文里，这就需要学好word排版或Tex排版，并且经常阅读文献才能培养出来。这方面资源自行搜索。</p><h6 id="2"><a href="#2" class="headerlink" title="2"></a>2</h6><p>主张在查阅相关资料时查找图书，来获得深入浅出的认识，也提到了类比。我想起来美赛时用卡车关系来联想帆船的朋友。大家都是固体液体气体，是可以碰到的，受重力作用</p><h6 id="3"><a href="#3" class="headerlink" title="3"></a>3</h6><h2 id="关于类比仿真"><a href="#关于类比仿真" class="headerlink" title="关于类比仿真"></a>关于类比仿真</h2><h3 id="猜测"><a href="#猜测" class="headerlink" title="猜测"></a>猜测</h3><p>听名字和我认识的，以海浪来比喻进军还挺相似的。我会用波利亚的解决问题步骤来理解数学建模的步骤，然后发现他们的不同。但关于这个，是基于对事物有熟悉的结构吗。</p><h3 id="仿真模型"><a href="#仿真模型" class="headerlink" title="仿真模型"></a>仿真模型</h3><p>初略查阅了一下，文献。仿真其实就是用程序来模拟过程的函数。我可以得到中间任何一部的结果，像是抛出一百枚硬币，我可以用随机数仿真。像是遗传算法，其实也是仿真。模拟寻找最优解过程；好像和我学的算法不冲突欸。</p><h3 id="怎么利用仿真模型"><a href="#怎么利用仿真模型" class="headerlink" title="怎么利用仿真模型"></a>怎么利用仿真模型</h3><p>其实我也是糊涂，怎么没想到用这个来解决问题。那还有什么能解决问题，假说检验法？投标问路，条件弱化的探索法，或者单纯的为什么。挺有意思的</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> -问题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> -数学建模 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>时间序列/力学/遗传算法</title>
+      <link href="/2023/07/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97-%E5%8A%9B%E5%AD%A6-%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/"/>
+      <url>/2023/07/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97-%E5%8A%9B%E5%AD%A6-%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="探索的意义"><a href="#探索的意义" class="headerlink" title="探索的意义"></a>探索的意义</h2><p>遗传算法有助于寻找最优解（这种迭代算法可以找到更好的，而且具有扩散的能力</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>图论相关</title>
+      <link href="/2023/07/22/%E5%9B%BE%E8%AE%BA%E7%9B%B8%E5%85%B3/"/>
+      <url>/2023/07/22/%E5%9B%BE%E8%AE%BA%E7%9B%B8%E5%85%B3/</url>
+      
+        <content type="html"><![CDATA[<h4 id="为什么要求解利用图论"><a href="#为什么要求解利用图论" class="headerlink" title="为什么要求解利用图论"></a>为什么要求解利用图论</h4><h4 id="概念以及各个性质的现实意义"><a href="#概念以及各个性质的现实意义" class="headerlink" title="概念以及各个性质的现实意义"></a>概念以及各个性质的现实意义</h4><h4 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h4><h5 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h5><p>这是一个处理两点之间最短路的算法，其中心思想是，从起点开始，每次选择距离起点最近的未访问过的顶点，然后更新其他顶点到起点的距离，直到所有顶点都被访问过或者到达终点。如果在一条最短路径中，任意两点的路径也应该是最小值。这很好理解，因为如果不是最小值，那就很容易被代替掉了</p><p>算法实现</p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%在matlab中，就一个.G表示你构造的图，1是起始点位置，11则为目标</span></span><br><span class="line">[p,d]=shortestpath(G,<span class="number">1</span>,<span class="number">11</span>)</span><br></pre></td></tr></table></figure><p>那么，这个算法是怎么实现的</p><p>根据其核心思想，我们可以想象三个袋子，一个装着已经探索过的点及其距离，而另一个则为没探索完的点及其距离。从A开始肯定有最短路径，因为如果选择其他路，单是另一条路就比最小途径大。不符合题意。其他的也依此类推，从A到B最短，从B到C最短。从而找到最小路。问题的关键是，你已经遍历了所有可能的状态</p><h5 id="全部"><a href="#全部" class="headerlink" title="全部"></a>全部</h5><h4 id="最小生成树问题"><a href="#最小生成树问题" class="headerlink" title="最小生成树问题"></a>最小生成树问题</h4><h5 id="关于连通图"><a href="#关于连通图" class="headerlink" title="关于连通图"></a>关于连通图</h5><h5 id="设计算法"><a href="#设计算法" class="headerlink" title="设计算法"></a>设计算法</h5><h5 id="prim算法"><a href="#prim算法" class="headerlink" title="prim算法"></a>prim算法</h5><h5 id="Ktuskal算法"><a href="#Ktuskal算法" class="headerlink" title="Ktuskal算法"></a>Ktuskal算法</h5><h4 id="最大最小流"><a href="#最大最小流" class="headerlink" title="最大最小流"></a>最大最小流</h4><h4 id="着色问题"><a href="#着色问题" class="headerlink" title="着色问题"></a>着色问题</h4><h5 id="关于异色的描述"><a href="#关于异色的描述" class="headerlink" title="关于异色的描述"></a>关于异色的描述</h5><h4 id="计划路线"><a href="#计划路线" class="headerlink" title="计划路线"></a>计划路线</h4><h5 id="什么样的是事件网络"><a href="#什么样的是事件网络" class="headerlink" title="什么样的是事件网络"></a>什么样的是事件网络</h5><h5 id="时间参数问题"><a href="#时间参数问题" class="headerlink" title="时间参数问题"></a>时间参数问题</h5><h5 id><a href="#" class="headerlink" title></a></h5><h4 id="旅行商问题"><a href="#旅行商问题" class="headerlink" title="旅行商问题"></a>旅行商问题</h4><h5 id="为什么要修改圈近似"><a href="#为什么要修改圈近似" class="headerlink" title="为什么要修改圈近似"></a>为什么要修改圈近似</h5>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> question </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>线性规划基于matlab的求解</title>
+      <link href="/2023/07/21/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E5%9F%BA%E4%BA%8Ematlab%E7%9A%84%E6%B1%82%E8%A7%A3/"/>
+      <url>/2023/07/21/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E5%9F%BA%E4%BA%8Ematlab%E7%9A%84%E6%B1%82%E8%A7%A3/</url>
+      
+        <content type="html"><![CDATA[<p> 涉及内容：线性规划方程组的解释，matlab求解方法，在绝对值情况的转化，怎么进行灵敏度分析</p><h3 id="线性规划方程"><a href="#线性规划方程" class="headerlink" title="线性规划方程"></a>线性规划方程</h3><h4 id="规划方程组的概念"><a href="#规划方程组的概念" class="headerlink" title="规划方程组的概念"></a>规划方程组的概念</h4><p>包括目标函数和限制条件，目标函数就是用来表示各个变量造成一个结果的函数，限制条件是表示变量的关系式，比如某几个变量加权后相加大于某个值，某些变量加权后等于某个值。它就像旅行选择路径，你的快乐程度与你路途的风景（X2），路上的时间（X3），吃的东西(X4)，体验到的文化(X5)相关。假设他们是最简单的线性关系，那么就是快乐程度 &#x3D; X2+X3+X4+X5.而上列事物又受到你的体力，金钱，假期时间所限制。比如：快乐程度不可能超过人类能体验的上限。吃的东西，路费+体验文化不能超过你给自己的经费。</p><h4 id="怎么建立线性规划方程"><a href="#怎么建立线性规划方程" class="headerlink" title="怎么建立线性规划方程"></a>怎么建立线性规划方程</h4><p>当前笔者的做法是，寻找已知的所有关系，找出能符合条件所有关系式，然后来寻找变量</p><h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>市场上有 n 种资产（如股票、债券、…）Si ( i&#x3D;1,…n) 供投资者选择，某公司有数额为 M 的<br>一笔相当大的资金可用作一个时期的投资。公司财务分析人员对这 n 种资产进行了评估，估算出<br>在这一时期内购买 Si 的平均收益率为 ir ，并预测出购买 Si 的风险损失率为 qi 。考虑到投资越分<br>散，总的风险越小，公司确定，当用这笔资金购买若干种资产时，总体风险可用所投资的 Si 中<br>最大的一个风险来度量。<br>购买 Si 要付交易费，费率为 pi ，并且当购买额不超过给定值ui 时，交易费按购买ui 计算（不<br>买当然无须付费）。另外，假定同期银行存款利率是 0r , 且既无交易费又无风险。（ 0r &#x3D;5%）</p><p>试给该公司设计一种投资组合方案，即用给定的资金 M ，有选择地购买若干种资产或存银行生<br>息，使净收益尽可能大，而总体风险尽可能小</p><h4 id="线性规划函数的求解程序"><a href="#线性规划函数的求解程序" class="headerlink" title="线性规划函数的求解程序"></a>线性规划函数的求解程序</h4><h4 id="如何转化绝对值问题"><a href="#如何转化绝对值问题" class="headerlink" title="如何转化绝对值问题"></a>如何转化绝对值问题</h4><h3 id="整数规划"><a href="#整数规划" class="headerlink" title="整数规划"></a>整数规划</h3><h4 id="整数规划的定义"><a href="#整数规划的定义" class="headerlink" title="整数规划的定义"></a>整数规划的定义</h4><p>当一个或者多个个变量只能取整数时，这个问题被称为整数规划。所以它有一下几种类型，部分变量取整数，混合整数规划；全部变量为整数，纯整数规划；全部只能取零一的情况，0-1整数规划</p><h4 id="整数规划的常见类型"><a href="#整数规划的常见类型" class="headerlink" title="整数规划的常见类型"></a>整数规划的常见类型</h4><h5 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h5><p>有n个不停物体供你选择，你的背包容量为nkg，每件物体的价格各异。让你在同等条件下，带最值钱的物体<br>这是一套很经典的0-1规划问题，在携带条件中，取某件物体只能取零件或者一件</p><h5 id="怎么进行编程表示"><a href="#怎么进行编程表示" class="headerlink" title="怎么进行编程表示"></a>怎么进行编程表示</h5><h6 id="笔者的思路"><a href="#笔者的思路" class="headerlink" title="笔者的思路"></a>笔者的思路</h6><p>既然是0-1的整数，使用int类型（应该有类型判断函数，然后不符合求剔除。）</p><h6 id="代码实现尝试"><a href="#代码实现尝试" class="headerlink" title="代码实现尝试"></a>代码实现尝试</h6><h5 id="什么叫派遣问题"><a href="#什么叫派遣问题" class="headerlink" title="什么叫派遣问题"></a>什么叫派遣问题</h5><p>这个问题的特点在于有x个人，有n件事情要干，每个人干某件事情带来的价值不一样。</p><h6 id="笔者的思路-1"><a href="#笔者的思路-1" class="headerlink" title="笔者的思路"></a>笔者的思路</h6><p>可以把某人干某件事单独用一个变量表示出来，如果有a个人，b件事情，那就有a*b个变量，每个变量就乘以A人干B事的价值，再相加</p><h6 id="书上的思路"><a href="#书上的思路" class="headerlink" title="书上的思路"></a>书上的思路</h6><p>和笔者一样。要补充说明的是这个问题与背包客问题最大的区别就是，有两个条件需要满足，即每件事只能让一个人来干，一个人只能干一件事。那么则有，关于第A事的变量和为1，关于第B事的变量和为1，</p><h5 id="旅行商问题"><a href="#旅行商问题" class="headerlink" title="旅行商问题"></a>旅行商问题</h5><p>一共有n个城市，每个城市之间都有路。旅行商要历经所有城市，不能重复，然后要返回最初的城市。每个城市的价值不同</p><h6 id="笔者的思路-2"><a href="#笔者的思路-2" class="headerlink" title="笔者的思路"></a>笔者的思路</h6><p>和派遣问题类似，派遣问题有2种项目用于选择，这个问题也有2种。一个是进入其他城市，另一个变量是被其他城市进入。很容易想到要建立n的平方个变量。并且有每个城市进入别的城市的次数的和离开别的城市的次数的和都为一。问题在于怎么表示首尾相连，我觉得只要让A城市进入了B城市和B城市被A进入一致就行了。这样它就一定不会断开。这样的话，如果它在A以外的地方形成闭环。如果是形成有自由点，那肯定不符合进入和离开都为1的情况。如果没有自由点，那得有一点进入的点为2.那肯定不成立。</p><h6 id="关于怎么保证返回出发城市"><a href="#关于怎么保证返回出发城市" class="headerlink" title="关于怎么保证返回出发城市"></a>关于怎么保证返回出发城市</h6><p>书上独立再设定了一个变量u，让出发城市为0，其他城市从取2到n-1的任意值；然后定义了一个关系式，ui - uj+n*xij《&#x3D;n-1，其中，ui的取值为0到你<br>，uj的取值为2到n-1.笔者的思路的最大问题就是，进入和离开的一致不代表只有一条线。可能会出现某些城市首尾自己连成环的情况。而这个关系式，如果出现了这种情况，就有不同关系式的ui，uj全部消掉，n左右消掉，变成0《&#x3D;-n，这显然不成立。但对于初始城市，因为uj取不到它，就不会出现消掉的情况。</p><h4 id="整数规划的求解程序"><a href="#整数规划的求解程序" class="headerlink" title="整数规划的求解程序"></a>整数规划的求解程序</h4><p>这是上面出现的optimvar模型</p><h4 id="非线性条件的线性化"><a href="#非线性条件的线性化" class="headerlink" title="非线性条件的线性化"></a>非线性条件的线性化</h4><h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><h3 id="非线性规划"><a href="#非线性规划" class="headerlink" title="非线性规划"></a>非线性规划</h3><h4 id="关于非线性规划"><a href="#关于非线性规划" class="headerlink" title="关于非线性规划"></a>关于非线性规划</h4><h5 id="什么是非线性规划"><a href="#什么是非线性规划" class="headerlink" title="什么是非线性规划"></a>什么是非线性规划</h5><h5 id="什么是凸规划"><a href="#什么是凸规划" class="headerlink" title="什么是凸规划"></a>什么是凸规划</h5><h5 id="凸规划应该符合什么性质"><a href="#凸规划应该符合什么性质" class="headerlink" title="凸规划应该符合什么性质"></a>凸规划应该符合什么性质</h5><h5 id="为什么凸规划局部最优解就是全局最优解"><a href="#为什么凸规划局部最优解就是全局最优解" class="headerlink" title="为什么凸规划局部最优解就是全局最优解"></a>为什么凸规划局部最优解就是全局最优解</h5><h4 id="飞行问题的例子"><a href="#飞行问题的例子" class="headerlink" title="飞行问题的例子"></a>飞行问题的例子</h4><h4 id="二次规划"><a href="#二次规划" class="headerlink" title="二次规划"></a>二次规划</h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学建模 matlab </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>蓝桥（关于时间问题）</title>
+      <link href="/2023/07/20/%E8%93%9D%E6%A1%A5%EF%BC%88%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E9%97%AE%E9%A2%98%EF%BC%89/"/>
+      <url>/2023/07/20/%E8%93%9D%E6%A1%A5%EF%BC%88%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E9%97%AE%E9%A2%98%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>博客的创建（二）：对网页进行编辑与写作</title>
+      <link href="/2023/07/19/%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%AF%B9%E7%BD%91%E9%A1%B5%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%BE%91/"/>
+      <url>/2023/07/19/%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%AF%B9%E7%BD%91%E9%A1%B5%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%BE%91/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="怎么创建tag"><a href="#怎么创建tag" class="headerlink" title="怎么创建tag"></a>怎么创建tag</h3><p>tag应该属于主题或者Hexo自带的_config.yml文档中的东西。之前阅读过Butterfly的readme，里面不包括此类内容。所以我可以在yml文档中找到。在花30秒左右后扫一眼，发现了# Category &amp; Tag的存在。</p><h4 id="尝试："><a href="#尝试：" class="headerlink" title="尝试："></a>尝试：</h4><p>创建在Tag中添加需要的字符，如果不行就删除掉。如果结果正确，在我的网站里，标签会新加一个。</p><h4 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h4><p>我生成了一下看看，结果是报错了。然后我百度了一下，可以直接依靠命令生成。我没有仔细读，因为我觉得和我想要的内容无关。我直接尝试添加在头文件的tag里.</p><h4 id="方案："><a href="#方案：" class="headerlink" title="方案："></a>方案：</h4><p>我阅读了那篇文章。它描述了如何创建一个标签和分类页。后期有在文章中添加标签的示范。它没有明确表明创建了一个标签。但联系前面没有任何创建标签的内容，很有可能这是答案。依葫芦画瓢，成功了。<br>那时我想着怎么去创建标签，直接添加标签的事情我也做过（我的指令不对，但没有报错）。所以事实上我没有获得这篇文章的信息，而是跳来跳去让自己的短时记忆崩溃。所以我是在拼命地寻找一个可以帮助自己的教程</p><h4 id="思考："><a href="#思考：" class="headerlink" title="思考："></a>思考：</h4><p>我常常为了解决问题做这样的事情：打开自己熟悉的搜索引擎和平台搜索自己的问题，东看一些，西看一点，然后让满屏都是自己的网页。那时我想着怎么去创建标签，直接在文章头·添加标签的事情我也做过（我的指令不对，但没有报错）。我是在另<br>一篇教程中无果才进行尝试的。事实上在那之前，我没有获得这篇文章的信息，而是跳来跳去让自己的短时记忆崩溃。我是在拼命地寻找一个可以帮助自己的教程。<br>如果没有这类教程，一到两个月内我都无法创建一个博客。那么我的思路可以从以下两点入手，提高尝试效率，加快查找效率</p><h3 id="怎么更改主页图片和用户名"><a href="#怎么更改主页图片和用户名" class="headerlink" title="怎么更改主页图片和用户名"></a>怎么更改主页图片和用户名</h3><p>hexo,或者主题肯定有自己配置的工具</p><h4 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h4><p>直接搜索“hexo””yonghuming”关键词。发现相关教程提供佐证，开始尝试。可以直接修改主题配置文件。在主题配置文件加入照片。</p><h4 id="结果：-1"><a href="#结果：-1" class="headerlink" title="结果："></a>结果：</h4><p>显而易见，我成功了。但事实上并不顺利。我试着按要求的改变yml文件，但头像，和其他标签页也不显示。我甚至一怒之下直接把预设文章删除了，结果也是没有任何影响。我的网站仍然可以运行，从那时我就在想，这是什么鬼。然后我开始回忆起来，我的主题用的不是从官网下载的，而是用cmd下载的。我的预设文件在node_modules那一行里。按照教程我很快就成功配置了主页图，头像以及菜单</p><h4 id="方案：-1"><a href="#方案：-1" class="headerlink" title="方案："></a>方案：</h4><p>打开你_config.yml或者主题其它以这个结尾的文件，找到avatar，把地址换成放入主题img的图片地址就行了。</p><h3 id="文章相关"><a href="#文章相关" class="headerlink" title="文章相关"></a>文章相关</h3><h4 id="怎么插入图片"><a href="#怎么插入图片" class="headerlink" title="怎么插入图片"></a>怎么插入图片</h4><p>这和图床有关系吗。可能这在最基础的算法里面有</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hi</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Question </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>博客的创建（一）：网站搭建与下载</title>
+      <link href="/2023/07/19/%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%B8%8B%E8%BD%BD/"/>
+      <url>/2023/07/19/%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%B8%8B%E8%BD%BD/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言：TRY一个尝试"><a href="#前言：TRY一个尝试" class="headerlink" title="前言：TRY一个尝试"></a>前言：TRY一个尝试</h3><p>在搭建博客之前，我只知道博客是一个“网络上”，“用于记录的”，“网站”。对于搭建博客所需要的时间和知识，我一无所知。依赖于网上的教程，本人于两小时左右搭建了这个网站。<br>这个网站是hexo——github仓库框架。具体搭建方法在网络上已经很详细了。本篇文章只列出原理，流程，和常见问题解答</p><h2 id="Hexo准备"><a href="#Hexo准备" class="headerlink" title="Hexo准备"></a>Hexo准备</h2>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/07/18/hello-world/"/>
+      <url>/2023/07/18/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/categories/index-1.html"/>
+      <url>/categories/index-1.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>问题</title>
+      <link href="/%E9%97%AE%E9%A2%98/index.html"/>
+      <url>/%E9%97%AE%E9%A2%98/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+  
+</search>
