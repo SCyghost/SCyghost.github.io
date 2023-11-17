@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>动态规划之摸鱼传</title>
+      <link href="/2023/11/17/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%91%B8%E9%B1%BC%E4%BC%A0/"/>
+      <url>/2023/11/17/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%91%B8%E9%B1%BC%E4%BC%A0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="g关于动态规划遇到的问题"><a href="#g关于动态规划遇到的问题" class="headerlink" title="g关于动态规划遇到的问题"></a>g关于动态规划遇到的问题</h1><ul><li><p><input disabled type="checkbox"> 用数学描述物体，比如f和h是什么意思?。(h作者没有解释清楚)</p><h3 id="不要读读了两遍以上没有思路的文章-Dilworth定理的介绍"><a href="#不要读读了两遍以上没有思路的文章-Dilworth定理的介绍" class="headerlink" title="不要读读了两遍以上没有思路的文章(Dilworth定理的介绍)"></a>不要读读了两遍以上没有思路的文章(Dilworth定理的介绍)</h3><p>这是一个介绍怎么找最长递减序列</p><p>思路很简单，假设有两个数组一个是你得到的数组<br>$$<br>D<br>$$<br>另一个是你要维护的数组，这个数组表示每一个最长序列的大小<br>$$<br>S<br>$$<br>S一开始是空的。di表示D的第几个数，s.top表示s的顶部元素。对于寻找最长递减序列符合下述规则</p><p>加入第一个元素,i+1</p><p>比较di和S.top的大小，如果di大于si则替换，小于则加入</p><p>这样子最后能把时间复杂度压到nlogn</p><p>今天的摸鱼就到这里</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> -技术笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> -算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>链表的实现喵</title>
       <link href="/2023/11/10/%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%96%B5/"/>
       <url>/2023/11/10/%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%96%B5/</url>
