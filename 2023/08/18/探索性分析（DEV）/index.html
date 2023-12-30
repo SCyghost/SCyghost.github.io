@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>探索性分析（EDA） | 燎言</title><meta name="author" content="SCyghost"><meta name="copyright" content="SCyghost"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="探索性分析有什么探索性分析分为3类，一种是预处理，一种是数据分布分析（即描述性分析），一种是相关性分析。按照图来分的话是四类，有图单变量，无图单变量，有图多变量，无图多变量 为什么要探索性分析一方面，因为很多检验方法，都是假设物体满足什么分布，一个一个尝试太蠢了。不如先看看。而且探索性分析有一般性步骤（这就跟做某件事的人多了，肯定能提供很多经验。虽然是对是错反而无从考量） 预处理数据文本化关于pa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="探索性分析（EDA）">
+<meta property="og:url" content="http://example.com/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/index.html">
+<meta property="og:site_name" content="燎言">
+<meta property="og:description" content="探索性分析有什么探索性分析分为3类，一种是预处理，一种是数据分布分析（即描述性分析），一种是相关性分析。按照图来分的话是四类，有图单变量，无图单变量，有图多变量，无图多变量 为什么要探索性分析一方面，因为很多检验方法，都是假设物体满足什么分布，一个一个尝试太蠢了。不如先看看。而且探索性分析有一般性步骤（这就跟做某件事的人多了，肯定能提供很多经验。虽然是对是错反而无从考量） 预处理数据文本化关于pa">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2023-08-18T07:00:39.000Z">
+<meta property="article:modified_time" content="2023-12-29T15:01:31.243Z">
+<meta property="article:author" content="SCyghost">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '探索性分析（EDA）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-29 23:01:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 书格</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Rss</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友人账</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="燎言"><span class="site-name">燎言</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 书格</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Rss</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友人账</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">探索性分析（EDA）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-18T07:00:39.000Z" title="发表于 2023-08-18 15:00:39">2023-08-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-29T15:01:31.243Z" title="更新于 2023-12-29 23:01:31">2023-12-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="探索性分析（EDA）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="探索性分析有什么"><a href="#探索性分析有什么" class="headerlink" title="探索性分析有什么"></a>探索性分析有什么</h2><p>探索性分析分为3类，一种是预处理，一种是数据分布分析（即描述性分析），一种是相关性分析。按照图来分的话是四类，有图单变量，无图单变量，有图多变量，无图多变量</p>
+<h2 id="为什么要探索性分析"><a href="#为什么要探索性分析" class="headerlink" title="为什么要探索性分析"></a>为什么要探索性分析</h2><p>一方面，因为很多检验方法，都是假设物体满足什么分布，一个一个尝试太蠢了。不如先看看。而且探索性分析有一般性步骤（这就跟做某件事的人多了，肯定能提供很多经验。虽然是对是错反而无从考量）</p>
+<h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><h2 id="数据文本化"><a href="#数据文本化" class="headerlink" title="数据文本化"></a>数据文本化</h2><h3 id="关于pandas库"><a href="#关于pandas库" class="headerlink" title="关于pandas库"></a>关于pandas库</h3><p>pandas库是一个基于矩阵的自创建的数据结构，至于<em><strong>创建的原因</strong></em></p>
+<h4 id="pandas库的导入"><a href="#pandas库的导入" class="headerlink" title="pandas库的导入"></a>pandas库的导入</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(A)</span><br><span class="line">A = [[<span class="string">&#x27;Fighter&#x27;</span>,<span class="number">10</span>,<span class="string">&#x27;2022-10-9&#x27;</span>],[<span class="string">&#x27;Magicer&#x27;</span>,<span class="number">7</span>,<span class="string">&#x27;2022-1-9&#x27;</span>]]</span><br><span class="line">N=[<span class="string">&#x27;Type&#x27;</span>,<span class="string">&#x27;LV&#x27;</span>,<span class="string">&#x27;Date&#x27;</span>]</span><br><span class="line">data1= pd.DataFrame(A)</span><br><span class="line"><span class="built_in">print</span>(data1)</span><br><span class="line"><span class="comment">#创建</span></span><br><span class="line">data = pd.DataFrame(data=A,columns=N)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上面进行了两次创建操作，一个是直接利用数据进行创建，另一个是基于数据和列名进行创建，如图，效果如下:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20231207173411603.png" alt="image-20231207173411603"></p>
+<p>可以看见，对于上面那个没有列名的，自动给他生成了1,2,3,4…。而左边的是索引，相当于数组中的索引，可以直接标记我们也可以直接定义索引,这个和上面的一样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = pd.DataFrame(data=A,columns=N,index=[<span class="number">1</span>,<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<p>需要知道的是，pandas带有一个很基础的功能，可以帮助我们看数据类型，缺失值和数量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(data.info())</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20231207174337976.png" alt="image-20231207174337976"></p>
+<p>需要解释的是显示的是非缺失值的值，可以结合,来看缺失值.当然，如果连计算都懒得计算的话。。。。当然是直接使用计算缺失值的函数拉</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;这个数据的大小是&quot;</span>,data.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;各个缺失值数量是&quot;</span>,data.isna().<span class="built_in">sum</span>())</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20231207175044979.png" alt="image-20231207175044979"></p>
+<p>很明显，二行三列。但我知道，作为我的读者，肯定不满足与此，这些事不是EXCEL都能搞吗(我要升级m9)</p>
+<p>接下来，我们来了解一些关于索引和列的最基本操作</p>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>关于给索引的操作有，给索引命名和重建索引，废话不多说，直接上代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(data.index.rename(<span class="string">&quot;BSZ&quot;</span>))<span class="comment">#给变量命名</span></span><br><span class="line"><span class="built_in">print</span>(data.reset_index())</span><br><span class="line"><span class="built_in">print</span>(data.reset_index().set_index(<span class="string">&quot;LV&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20231207180236202.png" alt="image-20231207180236202"></p>
+<p>然后可以用sort_index,sort_value来进行基于它们的排序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(data.sort_index())</span><br><span class="line"><span class="built_in">print</span>(data.sort_value([<span class="string">&quot;LV&quot;</span>]))</span><br></pre></td></tr></table></figure>
+
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><h5 id="loc和iloc"><a href="#loc和iloc" class="headerlink" title="loc和iloc"></a>loc和iloc</h5><h3 id="关于剔除多余文本"><a href="#关于剔除多余文本" class="headerlink" title="关于剔除多余文本"></a>关于剔除多余文本</h3><h4 id="单一格式"><a href="#单一格式" class="headerlink" title="单一格式"></a>单一格式</h4><p>先讨论最简单的情况，如果你要的东西是某个字符串，然后我们要把它转化为数据（也有可能是编码）</p>
+<h5 id="假设这个文本就是我们要转化的数据"><a href="#假设这个文本就是我们要转化的数据" class="headerlink" title="假设这个文本就是我们要转化的数据"></a>假设这个文本就是我们要转化的数据</h5><p>那么，一般就两种做法进行编码和使用训练好的文本库</p>
+<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="最常见的编码"><a href="#最常见的编码" class="headerlink" title="最常见的编码"></a>最常见的编码</h6><p>我们可以读入表格，然后利用基本的查找替换功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="不是我们需要的情况"><a href="#不是我们需要的情况" class="headerlink" title="不是我们需要的情况"></a>不是我们需要的情况</h5><p>让我们看一看周围，你要怎么把电脑右下角的时间转化为数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">time_str = <span class="string">&quot;2019/6/11 16:27&quot;</span></span><br><span class="line">datetime_obj = datetime.strptime(time_str, <span class="string">&quot;%Y/%m/%d %H:%M&quot;</span>)</span><br><span class="line"></span><br><span class="line">start_time = datetime(<span class="number">2019</span>, <span class="number">1</span>, <span class="number">1</span>)  <span class="comment"># 设置起始时间为2019年初</span></span><br><span class="line">time_diff = datetime_obj - start_time  <span class="comment"># 计算时间差</span></span><br><span class="line"></span><br><span class="line">minutes = time_diff.total_seconds() // <span class="number">60</span>  <span class="comment"># 转换为分钟数</span></span><br><span class="line"><span class="built_in">print</span>(minutes)</span><br></pre></td></tr></table></figure>
+
+<p>我们把时间提取成年月日后，再设置了一个起始时间。然后计算时间差之后，再转化为秒数再除以60，就是转化为分钟数<br>同理，下面是转化为小时数，以此类推</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(time_diff.total_seconds()//<span class="number">3600</span>)</span><br></pre></td></tr></table></figure>
+
+<p>当然，对于行读取，可以这么用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s[<span class="string">&#x27;时间&#x27;</span>] = pd.to_datetime(s[<span class="string">&#x27;时间&#x27;</span>])<span class="comment"># s为dataFrame数据，时间是列名</span></span><br><span class="line">s[<span class="string">&#x27;时间&#x27;</span>]=(s[<span class="string">&#x27;时间&#x27;</span>]-s[<span class="string">&#x27;时间&#x27;</span>][<span class="number">0</span>]).dt.seconds/<span class="number">3600</span></span><br><span class="line"><span class="built_in">print</span>(s.head())</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/blog\myblog\source_posts\探索性分析（DEV）\image-20230819141755613.png" alt="image-20230819141755613"></p>
+<p>得到该结果</p>
+<h1 id="数据分布和相关性分析·"><a href="#数据分布和相关性分析·" class="headerlink" title="数据分布和相关性分析·"></a>数据分布和相关性分析·</h1><h2 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h2><p>绘制折线图有什么用呢，除了能让我们看到数据的相关性以外，还能让我们看到数据的周期性</p>
+<h5 id="一般的折线图绘制"><a href="#一般的折线图绘制" class="headerlink" title="一般的折线图绘制"></a>一般的折线图绘制</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">plt.figure(figsize=(<span class="number">20</span>,<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&quot;各元素随时间变化图&quot;</span>)</span><br><span class="line">sns.lineplot(data=s)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/blog\myblog\source_posts\探索性分析（DEV）\image-20230819142906317.png" alt="image-20230819142906317"></p>
+<p>（如果你的中文没显示请加上下面这行代码）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.rcParams[&#x27;font.sans-serif&#x27;] = [&#x27;SimHei&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>我想说，这张图除了PM10在某两个时间很逆天，数据真是乱成一锅粥（笑）。不过我们可以看到大多数数据还是有点周期性的呢，一跳一跳的。而且时间也因为这种关系叠在一起</p>
+<h6 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h6><p>这次我们先试试只画一个来看看，完整代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import seaborn as sns</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import pandas as pd</span><br><span class="line">## 导入数据</span><br><span class="line">s = pd.read_csv(&quot;你的文件地址&quot;,encoding=&#x27;gbk&#x27;)#把”你的文件地址”替换成你的文件地址</span><br><span class="line">plt.rcParams[&#x27;font.sans-serif&#x27;] = [&#x27;SimHei&#x27;]  # 设置中文字体为黑体或其他支持中文的字体</span><br><span class="line">## 时间元素替换</span><br><span class="line">s[&#x27;时间&#x27;] = pd.to_datetime(s[&#x27;时间&#x27;])# s为dataFrame数据，时间是列名</span><br><span class="line">s[&#x27;时间&#x27;]=(s[&#x27;时间&#x27;]-s[&#x27;时间&#x27;][0]).dt.seconds/3600</span><br><span class="line">print(s.head())</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(20,10))</span><br><span class="line">plt.title(&quot;PM2.5随时间变化图&quot;)</span><br><span class="line">sns.lineplot(data=s[&#x27;PM2.5&#x27;],label=&quot;PM2.5&quot;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>在用过去的小时数时间替代字符串的时间后，我们用label为我们的图命名了</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/blog\myblog\source_posts\探索性分析（DEV）\image-20230819145051564.png" alt="image-20230819145051564"></p>
+<p>由于我们以小时为单位计时，我们很自然地联想到一周是168小时，这和pm2.5的变化似乎没有周期性关系。但由图可知，PM2.5是有着周期性的</p>
+<p>让我们看看PM10的表现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">20</span>,<span class="number">10</span>))</span><br><span class="line">plt.title(<span class="string">&quot;PM2.5随时间变化图&quot;</span>)</span><br><span class="line">sns.lineplot(data = s[<span class="string">&#x27;pm10&#x27;</span>],label = <span class="string">&#x27;pm10&#x27;</span>)</span><br><span class="line">sns.lineplot(data=s[<span class="string">&#x27;PM2.5&#x27;</span>],label=<span class="string">&quot;PM2.5&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/blog\myblog\source_posts\探索性分析（DEV）\image-20230819145815799.png" alt="image-20230819145815799"></p>
+<p>可以看到PM10和PM2.5叠在一起，似乎有着很强的相关性（画个热力图看看吧），而之前凸出的几个点还是PM10(跟异常值一样)不过。其实，不把data数据不按起始时间算更方便一点呢</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20230819150906229.png" alt="image-20230819150906229"></p>
+<h2 id="bar-AND-HEAT"><a href="#bar-AND-HEAT" class="headerlink" title="bar AND HEAT"></a>bar AND HEAT</h2><h3 id="bar-柱状图"><a href="#bar-柱状图" class="headerlink" title="bar(柱状图)"></a>bar(柱状图)</h3><p>柱状图其实不少见了，用来统计大小和多少什么的。有什么意义呢，可以看看平均值，最高值什么的，会有好一点的感觉</p>
+<p>让我们猜测一下，柱状图的代码是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.barplot()</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20230819152946502.png" alt="image-20230819152946502">事实也是如此，让我们过了吧（笑).可以看到PM2.5的污染治理在蒸蒸日上嘛</p>
+<h3 id="heatmap"><a href="#heatmap" class="headerlink" title="heatmap"></a>heatmap</h3><p>热力图的原理就不多做介绍，就是协方差。上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.rcParams[&#x27;font.sans-serif&#x27;] = [&#x27;Arial Unicode MS&#x27;]</span><br><span class="line">p = s.corr()</span><br><span class="line">plt.figure(figsize=(20,10))</span><br><span class="line">sns.heatmap(data=p,annot=True,square=True,cmap=&#x27;coolwarm&#x27;)</span><br><span class="line">plt.title(&quot;热力图&quot;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20230819155237890.png" alt="image-20230819155237890"></p>
+<p>和我猜测的一样，PM2.5和PM10相关性很高，O3几乎和谁都不兼容。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20230819162537369.png" alt="image-20230819162537369"></p>
+<p>还是老样子，具有很强的周期性的样子啊</p>
+<p>让我们对他拟合一下</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/Users\月神客\AppData\Roaming\Typora\typora-user-images\image-20230819163900297.png" alt="image-20230819163900297"></p>
+<p>总体呈现下降趋势</p>
+<h1 id="泰坦尼克-死亡乐透"><a href="#泰坦尼克-死亡乐透" class="headerlink" title="泰坦尼克-死亡乐透"></a>泰坦尼克-死亡乐透</h1><p>为什么要采用重采样技术</p>
+<p>它是什么，好在我不用</p>
+<p>有什么数据处理我在学习中的</p>
+<h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><p>不用多解释，这是惯例了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># data analysis and wrangling</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> random <span class="keyword">as</span> rnd</span><br><span class="line"></span><br><span class="line"><span class="comment"># visualization</span></span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.<span class="built_in">set</span>(style=<span class="string">&#x27;darkgrid&#x27;</span>, font_scale=<span class="number">1.4</span>)</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># machine learning</span></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC, LinearSVC</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Perceptron</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> SGDClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb</span><br><span class="line"><span class="keyword">from</span> lightgbm <span class="keyword">import</span> LGBMClassifier</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="DEV"><a href="#DEV" class="headerlink" title="DEV"></a>DEV</h2><p>很好，让我们来探索一下那些老到掉牙的数据</p>
+<p>首先让我们看一看</p>
+<h2 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h2><p>按照不存在的惯例，我们来看看数据的构成类型，一般来说数据分为四类，定量，定序，定比，和定量变量，这里我们先用定类统称前面两种。</p>
+<p>这很容易解释欠采样或者过采用，欠采样是数据太少导致的过拟合。而过采样则是由于某类数据过多而导致的。</p>
+<h3 id="定类变量："><a href="#定类变量：" class="headerlink" title="定类变量："></a>定类变量：</h3><p>按我的记忆这里有，编号，名字，票的等级，父母，兄弟姐妹，登船口，和所处船舱的位置(Cabin)<br>我所依照的教程没有对Cabin进行任何开发，但你知道，这不公平。这就跟你地震来了，在不在厕所里面一样。换个类似的说法，你在不在一楼。你知道，一楼可以随时跳窗逃生。</p>
+<p>根据肉眼法我发现里面有个G&#x2F;S&#x2F;C的东西，我有没有什么好办法把它分开来呢，还有编号，我想知道这玩意是不是和宇宙泰坦尼克一样，从小到达往前排，最前面的人可以第一时间和冰山美人零距离接触。</p>
+<p>这很有趣，我也想把这玩意分开来，从而加深的我的理解深度，更何况，我想做一个更好的模型<br>但结果这是太糟了，在Cabin里面有大量的缺失值，如果我想进一步探索就得解读那里面的关系。我已经发现同一字母开头的，Cabin差即为编号位。但我不了解Cabin为什么有那种Bxxx Bxxx Bxxx这种座位的，可以理解为家人票吗。</p>
+<p>看样子并不是，有可能只是单纯一个人占有很多位置而已。从座位编号中我还能挖掘出什么吗。不行吗，似乎是这样，我没办法挖掘，因为我认为里面有太多缺失值。</p>
+<p>要是缺失值没那么多就好了，有没有一个办法，去观察现有的值和所处位置的关系，也就是说，在只考虑前面的情况下，思考S和C的关系。但这得有一个前提，我能有办法去知道作为的上下文。很可惜，失败的尝试。接下来我只能暂时去模仿那些厉害的家伙的行为了，他们居然靠着模型袋装把正确率提高到一。</p>
+<p>数据处理</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">SCyghost</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/">http://example.com/2023/08/18/%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%88DEV%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">燎言</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/13/%E4%B8%8E%E8%BF%9E%E7%BB%AD%E7%9A%84%E7%88%B1%E6%81%A8%E6%83%85%E4%BB%87/" title="与连续的爱恨情仇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">与连续的爱恨情仇</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/07/%E4%B8%80%E6%AC%A1%E5%B0%9D%E8%AF%95/" title="关于微分方程，爬虫，决策的综合练习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">关于微分方程，爬虫，决策的综合练习</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">SCyghost</div><div class="author-info__description">问题，记录，计划，结果</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/SCyghost"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90%E6%9C%89%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">探索性分析有什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">为什么要探索性分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number"></span> <span class="toc-text">预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%96%87%E6%9C%AC%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">数据文本化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Epandas%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">关于pandas库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pandas%E5%BA%93%E7%9A%84%E5%AF%BC%E5%85%A5"><span class="toc-number">1.1.1.</span> <span class="toc-text">pandas库的导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8"><span class="toc-number">1.1.3.</span> <span class="toc-text">调用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#loc%E5%92%8Ciloc"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">loc和iloc</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%89%94%E9%99%A4%E5%A4%9A%E4%BD%99%E6%96%87%E6%9C%AC"><span class="toc-number">1.2.</span> <span class="toc-text">关于剔除多余文本</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">单一格式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E8%BF%99%E4%B8%AA%E6%96%87%E6%9C%AC%E5%B0%B1%E6%98%AF%E6%88%91%E4%BB%AC%E8%A6%81%E8%BD%AC%E5%8C%96%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">假设这个文本就是我们要转化的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.1.1.1.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-number">1.2.1.1.2.</span> <span class="toc-text">最常见的编码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E6%98%AF%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">不是我们需要的情况</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%E5%92%8C%E7%9B%B8%E5%85%B3%E6%80%A7%E5%88%86%E6%9E%90%C2%B7"><span class="toc-number"></span> <span class="toc-text">数据分布和相关性分析·</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">折线图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E7%9A%84%E6%8A%98%E7%BA%BF%E5%9B%BE%E7%BB%98%E5%88%B6"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">一般的折线图绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B"><span class="toc-number">1.0.0.1.1.</span> <span class="toc-text">改进</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bar-AND-HEAT"><span class="toc-number">2.</span> <span class="toc-text">bar AND HEAT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bar-%E6%9F%B1%E7%8A%B6%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">bar(柱状图)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#heatmap"><span class="toc-number">2.2.</span> <span class="toc-text">heatmap</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B-%E6%AD%BB%E4%BA%A1%E4%B9%90%E9%80%8F"><span class="toc-number"></span> <span class="toc-text">泰坦尼克-死亡乐透</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">1.</span> <span class="toc-text">导入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DEV"><span class="toc-number">2.</span> <span class="toc-text">DEV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%B1%BB%E5%8F%98%E9%87%8F%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">定类变量：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/09/%E5%85%B3%E4%BA%8E%E7%BE%8A%E7%BE%A4%E7%AE%97%E6%B3%95%E7%9A%84%E7%A0%94%E7%A9%B6/" title="关于羊群算法的研究">关于羊群算法的研究</a><time datetime="2023-12-09T14:57:55.000Z" title="发表于 2023-12-09 22:57:55">2023-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/29/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%80%E7%B3%BB%E5%88%97%E7%89%B9%E6%80%A7/" title="时间序列的一系列特性">时间序列的一系列特性</a><time datetime="2023-11-29T15:58:06.000Z" title="发表于 2023-11-29 23:58:06">2023-11-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84remake/" title="机器学习的remake">机器学习的remake</a><time datetime="2023-11-22T10:36:29.000Z" title="发表于 2023-11-22 18:36:29">2023-11-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/22/%E7%8C%AE%E7%BB%99%E6%88%91%E7%81%B5%E9%AD%82%E7%9A%84%E7%A4%BC%E8%B5%9E/" title="献给我灵魂的礼赞">献给我灵魂的礼赞</a><time datetime="2023-11-21T16:04:58.000Z" title="发表于 2023-11-22 00:04:58">2023-11-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/19/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0/" title="基本数据结构实现">基本数据结构实现</a><time datetime="2023-11-19T06:57:21.000Z" title="发表于 2023-11-19 14:57:21">2023-11-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By SCyghost</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
